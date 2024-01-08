@@ -33,14 +33,15 @@ mixin CourseMixin<T extends StatefulWidget> on State<T> {
       for (int i = 0; i < listTeacherModel.length; i++) {
         if (index == i) {
           if (i == listTeacherModel.length - 1) {
-            height += 70 + (listClick[i] ? 0 : 33) + (listClick[i] ? 0 : ((i == 0 ? 3 : listTeacherModel[i].listCourse.length)) * 52);
+            height += 70 + (listClick[i] ? 33 : 0) + (listClick[i] ? ((i == 0 ? 3 : listTeacherModel[i].listCourse.length)) * 52 : 0);
             scrollController.jumpTo(height.w);
           }else {
+            if (index > provider.indexTeacher) height += 70 + (listClick[i] ? 33 : 0) + (listClick[i] ? ((i == 0 ? 3 : listTeacherModel[i].listCourse.length)) * 52 : 0);
             scrollController.animateTo(height.w, duration: const Duration(milliseconds: 500), curve: Curves.linear);
             break;
           }
         } else {
-          height += 70 + (listClick[i] ? 0 : 33) + (listClick[i] ? 0 : ((i == 0 ? 3 : listTeacherModel[i].listCourse.length)) * 52);
+          height += 70 + (listClick[i] ? 33 : 0) + (listClick[i] ? ((i == 0 ? 3 : listTeacherModel[i].listCourse.length)) * 52 : 0);
         }
       }
     }

@@ -19,9 +19,11 @@ abstract class BasePageState<T extends BasePage> extends State<T> with RouteAwar
   Widget setBuild() {
     return Column(
       children: [
-        title == Constants.home
+       Expanded(
+           child: title == Constants.home
             ? const SizedBox.shrink()
-            : const BaseSecondPage(),
+            : const BaseSecondPage()
+       ),
         SizedBox(height: Platform.isAndroid ? MediaQuery.of(context).padding.bottom : 0)
       ],
     );
