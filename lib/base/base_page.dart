@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -18,23 +20,28 @@ abstract class BasePageState<T extends BasePage> extends State<T> with RouteAwar
   String title = '';
 
   Widget setBuild() {
-    return title == Constants.home
-        ? const SizedBox.shrink()
-        : Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30.w),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          ListItemView(
-            isItemChild: false,
-            tap: () => context.read<CourseProvider>().secondPageTap(context),
+    return Column(
+      children: [
+        title == Constants.home
+            ? const SizedBox.shrink()
+            : Padding(
+          padding: EdgeInsets.symmetric(horizontal: 30.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ListItemView(
+                isItemChild: false,
+                tap: () => context.read<CourseProvider>().secondPageTap(context),
+              ),
+              ListItemView(
+                isItemChild: true,
+                tap: () => context.read<CourseProvider>().secondPageTap(context),
+              ),
+            ],
           ),
-          ListItemView(
-            isItemChild: true,
-            tap: () => context.read<CourseProvider>().secondPageTap(context),
-          ),
-        ],
-      ),
+        ),
+        SizedBox(height: Platform.isAndroid ? MediaQuery.of(context).padding.bottom : 0)
+      ],
     );
   }
 
