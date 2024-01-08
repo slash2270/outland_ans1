@@ -1,12 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:provider/provider.dart';
-import '../state/provider/course_provider.dart';
+import 'package:outland/base/child/base_sencond_page.dart';
 import '../util/constants.dart';
-import '../view/child/list_item_view.dart';
 
 abstract class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
@@ -24,22 +21,7 @@ abstract class BasePageState<T extends BasePage> extends State<T> with RouteAwar
       children: [
         title == Constants.home
             ? const SizedBox.shrink()
-            : Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.w),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              ListItemView(
-                isItemChild: false,
-                tap: () => context.read<CourseProvider>().secondPageTap(context),
-              ),
-              ListItemView(
-                isItemChild: true,
-                tap: () => context.read<CourseProvider>().secondPageTap(context),
-              ),
-            ],
-          ),
-        ),
+            : const BaseSecondPage(),
         SizedBox(height: Platform.isAndroid ? MediaQuery.of(context).padding.bottom : 0)
       ],
     );
