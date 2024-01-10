@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:outland/base/child/base_sencond_page.dart';
@@ -24,7 +25,7 @@ abstract class BasePageState<T extends BasePage> extends State<T> with RouteAwar
             ? const SizedBox.shrink()
             : const BaseSecondPage()
        ),
-        SizedBox(height: Platform.isAndroid ? MediaQuery.of(context).padding.bottom : 0)
+        SizedBox(height: Constants.bottomBarHeight)
       ],
     );
   }
