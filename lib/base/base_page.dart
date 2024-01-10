@@ -12,20 +12,10 @@ abstract class BasePage extends StatefulWidget {
 
 abstract class BasePageState<T extends BasePage> extends State<T> with RouteAware {
 
-  String title = '';
+  late String title = '';
+  late Widget mainWidget = const SizedBox.shrink();
 
-  Widget setBuild() {
-    return Column(
-      children: [
-       Expanded(
-           child: title == Constants.home
-            ? const SizedBox.shrink()
-            : const BaseSecondPage()
-       ),
-        SizedBox(height: Constants.bottomBarHeight)
-      ],
-    );
-  }
+  Widget setBuild() => title == Constants.home ? mainWidget : const BaseSecondPage();
 
   @override
   Widget build(BuildContext context) {

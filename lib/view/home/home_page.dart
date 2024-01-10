@@ -18,6 +18,15 @@ class _MyHomePageState extends BasePageState<MyHomePage> with CourseMixin {
   String get title => Constants.home;
 
   @override
+  Widget get mainWidget => CustomFutureBuilder(
+    getData: () => future,
+    widget: (data) {
+      initList(data!);
+      return setWidget(data);
+    },
+  );
+
+  @override
   void initState() {
     getData();
     super.initState();
@@ -27,17 +36,6 @@ class _MyHomePageState extends BasePageState<MyHomePage> with CourseMixin {
   void dispose() {
     setDispose();
     super.dispose();
-  }
-
-  @override
-  Widget setBuild() {
-    return CustomFutureBuilder(
-      getData: () => future,
-      widget: (data) {
-        initList(data!);
-        return setWidget(data);
-      },
-    );
   }
 
 }
