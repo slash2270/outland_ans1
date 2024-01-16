@@ -18,14 +18,9 @@ class ImageView extends StatelessWidget {
       size: 30.w,
       color: Colors.grey,
     )
-        : Selector<CourseProvider, CourseProvider>(
-        selector: (_, provider) => provider,
-        builder: (context, provider, child) {
-          return ClipRRect(
-            borderRadius: BorderRadius.all(Radius.circular(100.w)),
-            child: Image.asset(teacherModel!.image, width: 40.w, height: 40.w, fit: BoxFit.fill),
-          );
-        }
+        : ClipRRect(
+      borderRadius: BorderRadius.all(Radius.circular(100.w)),
+      child: Image.asset(teacherModel!.image, width: 40.w, height: 40.w, fit: BoxFit.fill),
     );
   }
 }

@@ -14,19 +14,15 @@ class TextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Selector<CourseProvider, CourseProvider>(
-        selector: (_, provider) => provider,
-        builder: (context, provider, child) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(isItemChild ? courseModel?.course ?? '' : teacherModel?.degree ?? '',
-                  style: !isItemChild ? Constants.textTop : Constants.textDown),
-              Text(isItemChild ? courseModel?.time ?? '' : teacherModel?.name ?? '',
-                  style: Constants.textDown),
-            ],
-          );
-        });
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(isItemChild ? courseModel?.course ?? '' : teacherModel?.degree ?? '',
+            style: !isItemChild ? Constants.textTop : Constants.textDown),
+        Text(isItemChild ? courseModel?.time ?? '' : teacherModel?.name ?? '',
+            style: Constants.textDown),
+      ],
+    );
   }
 }

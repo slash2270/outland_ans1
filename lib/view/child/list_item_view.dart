@@ -68,7 +68,7 @@ class ListItemView extends StatelessWidget {
                   const Expanded(child: SizedBox.shrink()),
                   listClick == null && !isItemChild
                       ? const SizedBox.shrink()
-                      : ButtonView(isItemChild: isItemChild, isClick: isItemChild ? null : listClick![indexTeacher!]),
+                      : ButtonView(key: ValueKey(listClick == null && !isItemChild), isItemChild: isItemChild, isClick: isItemChild ? null : listClick![indexTeacher!]),
                 ],
               ),
               Visibility(
